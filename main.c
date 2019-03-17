@@ -1,15 +1,33 @@
 #include <stdio.h>
 #include <string.h>
 
+int globalVar = 0;
+
+//Functions
+int addTwoInts(int num1, int num2)
+{
+    return num1 + num2;
+}
+
+void changeVariables()
+{
+    int age = 40;
+
+    printf("age inside of function = %d\n\n", age);
+
+    globalVar = 100;
+
+    printf("globalVar inside of function = %d\n\n", globalVar);
+}
 
 int main() {
 
-    //Characters and Strings
+//    //Characters and Strings
 //    char myName[] = "Moin";
 //    strcpy(myName, "Dee");
 //    printf("My name is %s\n\n", myName);
 
-    //ScanF
+//    //ScanF
 //    char lastInitial;
 //
 //    printf("What is your last initial? ");
@@ -34,7 +52,7 @@ int main() {
 //    printf("\nBirth Date %d/%d/%d\n\n", month, day, year);
 
 
-    //Math Operators
+//    //Math Operators
 
 //    int num1 = 12, num2 = 15, numAns;
 //    float decimal1 = 1.2, decimal2 = 1.5, decimalAns;
@@ -66,12 +84,167 @@ int main() {
 //    printf("%d++ : %d\n\n", exNum, exNum++);
 
 
-    int numberEx = 12;
-    int numberEx2 = 14;
+//    int numberEx = 12;
+//    int numberEx2 = 14;
+//
+//    printf("NumberEx / NumberEx2: %f\n\n", (float) numberEx / numberEx2);
 
-    printf("NumberEx / NumberEx2: %f\n\n", (float) numberEx / numberEx2);
+//    //If statement
+//    int num1 = 1, num2 =2;
+//
+//    printf("Is 1 > 2 : %d\n\n", num1, num2);
+//
+//    if(num1 > num2) {
+//        printf("%d is greater than %d\n\n", num1, num2);
+//    } else if(num1 < num2) {
+//        printf("%d is less than %d\n\n", num1, num2);
+//    } else {
+//        printf("%d is equal to %d\n\n", num1, num2);
+//    }
+//
+//    //Logical Operators
+//
+//    int custAge = 38;
+//
+//    if(custAge > 21 && custAge < 35) printf("They are welcome\n\n");
+//    else printf("They are not welcome\n\n");
+//
+//    printf("! turns a true into false : %d\n\n", !1);
+//
+//    int bobMissedDays = 8, bobTotalSales = 24000, bobNewCust = 32;
+//
+//    if(bobMissedDays < 10 && bobTotalSales > 30000 || bobNewCust > 30) printf("Bob gets a raise");
+//    else printf("Bob doesn't get a raise");
+
+//    //Ternary Operator
+//    char* legalAge = (custAge > 21) ? "true" : "false";
+//
+//    printf("Is the customer of legal age? %s\n\n", legalAge);
+//
+//    int numOfProducts = 10;
+//
+//    printf("I bought %s products \n\n", (numOfProducts > 1) ? "many": "one");
 
 
+//    //DataTypes and Byte Size
+
+    //1 byte = 8 bits
+    // [0,0,0,0,0,0,0,0] = 0
+    // [0,0,0,0,0,0,0,1] = 1
+    // [0,0,0,0,0,0,1,0] = 2
+    // [0,0,0,0,0,0,1,1] = 3
+    // [0,0,0,0,0,1,0,0] = 4
+
+//    printf("\n");
+//
+//    printf("A char takes up %d bytes\n\n", sizeof(char));
+//    printf("A int takes up %d bytes\n\n", sizeof(int));
+//    printf("A long takes up %d bytes\n\n", sizeof(long));
+//    printf("A float takes up %d bytes\n\n", sizeof(float));
+//    printf("A double takes up %d bytes\n\n", sizeof(double));
+//
+//    int numberHowBig = 0;
+//
+//    printf("How Many Bits? ");
+//    scanf(" %d", &numberHowBig);
+//    printf("\n\n");
+//
+//    int myIncrementor = 1, myMultiplier = 1,
+//        finalValue = 1;
+//
+//    while(myIncrementor < numberHowBig) {
+//        myMultiplier *= 2;
+//        finalValue = finalValue + myMultiplier;
+//        myIncrementor++;
+//    }
+//
+//    if((numberHowBig == 0) || (numberHowBig == 1)) {
+//        printf("Top Value: %d\n\n", numberHowBig);
+//    } else {
+//        printf("Top Value: %d\n\n", finalValue);
+//    }
+
+//    //For loop
+//
+//    //Print only odd numbers
+//    for(int counter = 0; counter <= 20; counter++) {
+//        if((counter % 2) == 0) continue;
+//        printf("%d\n\n", counter);
+//    }
+
+//    //Switch Statement
+//
+//    int whatToDo = 0;
+//
+//    do {
+//
+//        printf("\n");
+//        printf("1. What time is it?\n");
+//        printf("2. What is today date?\n");
+//        printf("3. What day is it?\n");
+//        printf("4. Quit\n");
+//
+//        scanf(" %d", &whatToDo);
+//    } while(whatToDo < 1 || whatToDo > 4);
+//
+//
+//    switch(whatToDo) {
+//        case(1) : printf("Print the time");
+//                    break;
+//        case(2) : printf("Print the date");
+//                    break;
+//        case(3) : printf("Print the day");
+//                    break;
+//        case(4) : printf("Bye Bye");
+//                    exit(0);
+//                    break;
+//    }
+//
+//
+//    //fgets
+//
+//    char yourCity[30];
+//    char thirdCity[] = "Paris";
+//
+//    printf("What city do you live in? ");
+//
+//    fgets(yourCity, 9, stdin);
+//
+//    printf("Hello %s\n", yourCity);
+//
+////    printf("Is your city Paris? %d\n\n", strcmp(yourCity, thirdCity));
+//
+//    char yourState[] = ", NY";
+//
+//    strcat(yourCity, yourState);
+//
+//    printf("You live in %s\n\n", yourCity);
+//
+//    printf("Letters in Paris : %d\n\n", strlen(thirdCity));
+//
+//    strlcpy(yourCity, "El Pueblo del la Reina de Los Angeles", sizeof(yourCity));
+//
+//    printf("New City is %s\n\n", yourCity);
+//
+//
+//    int total = addTwoInts(2,4);
+//    printf("The sum of 2 and 4 is %d\n\n", total);
+
+    //Local
+    int age = 10;
+
+    //Change global
+    globalVar = 50;
+
+    printf("age before a call to the function = %d\n\n", age);
+
+    printf("globalVar before a call to the function = %d\n\n", globalVar);
+
+    changeVariables();
+
+    printf("age after a call to the function = %d\n\n", age);
+
+    printf("globalVar after a call to the function = %d\n\n", globalVar);
 
     return 0;
 }
