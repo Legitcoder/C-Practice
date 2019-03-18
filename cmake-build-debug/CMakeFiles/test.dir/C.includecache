@@ -13,4 +13,8 @@ string.h
 -
 stdlib.h
 -
+ctype.h
+-
+stdbool.h
+-
 
