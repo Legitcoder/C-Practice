@@ -1,7 +1,50 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int globalVar = 0;
+
+
+
+//Structs
+
+struct dogFavs {
+
+    char *food;
+    char *friend;
+
+};
+
+typedef struct dog{
+
+    const char *name;
+    const char *breed;
+    int avgHeightCm;
+    int avgWeightLbs;
+
+    struct dogFavs favoriteThings;
+
+} dog;
+
+void getDogInfo(struct dog theDog)
+{
+    printf("\n");
+
+    printf("Name: %s\n\n", theDog.name);
+    printf("Breed: %s\n\n", theDog.breed);
+    printf("Avg Height: %d cms\n\n", theDog.avgHeightCm);
+    printf("Avg Weight: %d lbs\n\n", theDog.avgWeightLbs);
+
+}
+
+void getMemoryLocations(struct dog theDog)
+{
+    printf("Name Location: %d\n\n", theDog.name);
+    printf("Breed Location: %d\n\n", theDog.breed);
+    printf("Average Height Location: %d\n\n", &theDog.avgWeightLbs);
+    printf("Average Weight Location: %d\n\n", &theDog.avgHeightCm);
+}
+
 
 //Functions
 int addTwoInts(int num1, int num2)
@@ -18,6 +61,43 @@ void changeVariables()
     globalVar = 100;
 
     printf("globalVar inside of function = %d\n\n", globalVar);
+}
+
+void generateTwoRandomNums(int* rand1, int* rand2)
+{
+    *rand1 = rand() % 50 + 1;
+    *rand2 = rand() % 50 + 1;
+
+    printf("New rand1 in function = %d\n\n", *rand1);
+    printf("New rand2 in function = %d\n\n", *rand2);
+}
+
+void editMessageSent(char* message, int size)
+{
+    char newMessage[] = "New Message";
+    if(size > sizeof(newMessage)){
+
+        for(int i = 0; i < sizeof(newMessage); i++){
+
+            message[i] = newMessage[i];
+        }
+    } else{
+        printf("New Message is too big\n\n");
+    }
+}
+
+void getDogsFavs(dog theDog)
+{
+    printf("\n");
+
+    printf("%s loves %s and his friend is %s\n\n", theDog.name, theDog.favoriteThings.food, theDog.favoriteThings.friend);
+}
+
+void setDogWeightPtr(dog *theDog, int newWeight)
+{
+    (*theDog).avgWeightLbs = newWeight;
+
+    printf("The weight was changed to %d\n\n", (*theDog).avgWeightLbs);
 }
 
 int main() {
@@ -229,22 +309,93 @@ int main() {
 //
 //    int total = addTwoInts(2,4);
 //    printf("The sum of 2 and 4 is %d\n\n", total);
+//
+//    //Local
+//    int age = 10;
+//
+//    //Change global
+//    globalVar = 50;
+//
+//    printf("age before a call to the function = %d\n\n", age);
+//
+//    printf("globalVar before a call to the function = %d\n\n", globalVar);
+//
+//    changeVariables();
+//
+//    printf("age after a call to the function = %d\n\n", age);
+//
+//    printf("globalVar after a call to the function = %d\n\n", globalVar);
+//
+//    int rand1 = 12, rand2 = 15;
+//
+//    printf("rand1 = %p : rand2 = %p\n\n", &rand1, &rand2);
+//
+//    printf("rand1 = %d : rand2 = %d\n\n", &rand1, &rand2);
+//
+//    printf("Size of int %d\n\n", sizeof(rand1));
+//
+//    int *pRand1 = &rand1;
+//
+//    printf("Pointer %p\n\n", pRand1);
+//
+//    printf("Pointer %d\n\n", pRand1);
+//
+//    //Defrencing a pointer
+//    printf("Value: %d\n\n", *pRand1);
+//
+//    int primeNumbers[] = {2, 3, 5, 7};
+//
+//    printf("Second index : %d\n\n", primeNumbers[1]);
+//
+//    //Pointer Arithmetic
+//    printf("Second index : %d\n\n", *(primeNumbers + 1));
 
-    //Local
-    int age = 10;
+//    char *students[4] = {"Sally", "Mark", "Paul", "Sue"};
+////
+////    for(int i = 0; i < 4; i++){
+////        printf("%s : %d\n\n", students[i], &students[i]);
+////    }
 
-    //Change global
-    globalVar = 50;
+//    int rand3 =0, rand4 = 0;
+//
+//    printf("Main Before Function Call\n\n");
+//
+//    printf("rand3 = %d\n\n", rand3);
+//    printf("rand4 = %d\n\n", rand4);
+//
+//    generateTwoRandomNums(&rand3, &rand4);
+//
+//    printf("Main After Function Call\n\n");
+//
+//    printf("rand3 = %d\n\n", rand3);
+//    printf("rand4 = %d\n\n", rand4);
+//
+//
+//    char randomMessage[] = "Edit my function";
+//
+//    printf("Old Message: %s\n\n", randomMessage);
+//
+//    editMessageSent(randomMessage, sizeof(randomMessage));
+//
+//    printf("New Message: %s\n\n", randomMessage);
 
-    printf("age before a call to the function = %d\n\n", age);
 
-    printf("globalVar before a call to the function = %d\n\n", globalVar);
+//    //Structs in main
+//    struct dog cujo = {"Cujo", "Saint Bernard", 90, 264};
+//
+////    getDogInfo(cujo);
+//
+//    struct dog cujo2 = cujo;
+//
+//    getMemoryLocations(cujo);
+//
+//    getMemoryLocations(cujo2);
 
-    changeVariables();
+    dog benji = {"Benji", "Silk Terrier", 25, 9, {"Meat", "Joe Camp"}};
 
-    printf("age after a call to the function = %d\n\n", age);
+    setDogWeightPtr(&benji, 11);
 
-    printf("globalVar after a call to the function = %d\n\n", globalVar);
+    printf("Benji's weight in Main(): %d\n\n", benji.avgWeightLbs);
 
     return 0;
 }
